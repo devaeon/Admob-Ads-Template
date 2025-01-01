@@ -21,7 +21,12 @@ kotlin {
 }
 
 dependencies {
-
+    compileOnly(libs.android.gradlePlugin)
+    compileOnly(libs.android.tools.common)
+    compileOnly(libs.firebase.crashlytics.gradlePlugin)
+    compileOnly(libs.firebase.performance.gradlePlugin)
+    compileOnly(libs.kotlin.gradlePlugin)
+    compileOnly(libs.ksp.gradlePlugin)
 }
 
 tasks {
@@ -33,10 +38,25 @@ tasks {
 
 gradlePlugin {
     plugins {
+
         register("androidApplication") {
-            id = "com.devaeon.gradle.android.androidApplication"
+            id = "devaeon.android.application"
             implementationClass = "com.devaeon.gradle.convention.AndroidApplicationConventionPlugin"
         }
-    }
 
+        register("androidLibrary") {
+            id = "devaeon.android.library"
+            implementationClass = "com.devaeon.gradle.convention.AndroidLibraryConventionPlugin"
+        }
+
+        register("androidHilt") {
+            id = "devaeon.android.hilt"
+            implementationClass = "com.devaeon.gradle.convention.HiltConventionPlugin"
+        }
+
+        register("firebase") {
+            id = "davaeon.firebase"
+            implementationClass = "com.devaeon.gradle.convention.FirebaseConventionPlugin"
+        }
+    }
 }
