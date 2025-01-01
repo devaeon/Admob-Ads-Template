@@ -79,5 +79,5 @@ firebase-perf = { id = "com.google.firebase.firebase-perf", version.ref = "fireb
 # Plugins defined by this project
 devaeon-android-application = { id = "devaeon.android.application", version = "unspecified" }
 devaeon-android-library = { id = "devaeon.android.library" }
-devaeon-android-hilt = { id = "devaeon.android.hilt" }
+devaeon-dagger-hilt = { id = "devaeon.dagger.hilt" }
 devaeon-firebase = { id = "davaeon.firebase" }

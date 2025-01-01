@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.devaeon.android.application)
     alias(libs.plugins.kotlin.android)
 
-    alias(libs.plugins.devaeon.android.hilt)
+    alias(libs.plugins.devaeon.dagger.hilt)
     alias(libs.plugins.devaeon.firebase)
 }
 
@@ -37,4 +37,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation(project(":feature:revenue"))
+
 }

@@ -20,10 +20,8 @@ internal class VersionCatalogWrapper(private val libs: VersionCatalog) {
             get() = libs.getPluginId("android.application")
         val androidLibrary: String
             get() = libs.getPluginId("android.library")
-
         val jetbrainsKotlinAndroid: String
             get() = libs.getPluginId("kotlin.android")
-
         val googleKsp: String
             get() = libs.getPluginId("ksp")
         val googleDaggerHiltAndroid: String
@@ -31,6 +29,7 @@ internal class VersionCatalogWrapper(private val libs: VersionCatalog) {
 
         val firebasePerformance: String
             get() = libs.getPluginId("firebase.perf")
+
         val firebaseCrashlytics: String
             get() = libs.getPluginId("firebase.crashlytics")
 

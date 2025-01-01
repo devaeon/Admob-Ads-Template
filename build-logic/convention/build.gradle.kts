@@ -49,8 +49,8 @@ gradlePlugin {
             implementationClass = "com.devaeon.gradle.convention.AndroidLibraryConventionPlugin"
         }
 
-        register("androidHilt") {
-            id = "devaeon.android.hilt"
+        register("daggerHilt") {
+            id = "devaeon.dagger.hilt"
             implementationClass = "com.devaeon.gradle.convention.HiltConventionPlugin"
         }
 

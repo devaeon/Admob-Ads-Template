@@ -10,6 +10,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import com.devaeon.adsTemplate.databinding.ActivityMainBinding
+import com.devaeon.feature.revenue.data.ads.sdk.GoogleAdsSdk
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 
 class MainActivity : AppCompatActivity() {
 
