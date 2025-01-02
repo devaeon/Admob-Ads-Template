@@ -32,7 +32,6 @@ internal class VersionCatalogWrapper(private val libs: VersionCatalog) {
 
         val firebaseCrashlytics: String
             get() = libs.getPluginId("firebase.crashlytics")
-
         val googleGms: String
             get() = libs.getPluginId("googleGms")
 

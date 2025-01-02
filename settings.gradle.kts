@@ -1,9 +1,3 @@
-@file:Suppress("UnstableApiUsage")
-import org.gradle.api.initialization.resolve.RepositoriesMode.FAIL_ON_PROJECT_REPOS
-
-include(":core:analytics")
-
-
 pluginManagement {
     includeBuild("build-logic")
     repositories {
@@ -19,7 +13,7 @@ pluginManagement {
     }
 }
 dependencyResolutionManagement {
-    repositoriesMode.set(FAIL_ON_PROJECT_REPOS)
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
@@ -28,4 +22,12 @@ dependencyResolutionManagement {
 
 rootProject.name = "AdmobAdsTemplate"
 include(":app")
+
+// Core modules
+include(":core:common")
+include(":core:data")
+include(":core:domain")
+include(":core:ui")
+
+// Feature Modules
 include(":feature:revenue")

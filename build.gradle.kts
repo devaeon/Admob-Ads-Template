@@ -1,6 +1,25 @@
+import org.gradle.internal.impldep.org.junit.experimental.categories.Categories.CategoryFilter.exclude
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+buildscript {
+    repositories {
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
+        mavenCentral()
 
+        // Android Build Server
+        maven { url = uri("../nowinandroid-prebuilts/m2repository") }
+    }
+    dependencies {
+
+    }
+}
 /*
  * By listing all the plugins used throughout all subprojects in the root project build script, it
  * ensures that the build script classpath remains the same for all projects. This avoids potential

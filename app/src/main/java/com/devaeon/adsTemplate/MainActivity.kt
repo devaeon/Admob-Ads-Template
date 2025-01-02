@@ -1,6 +1,7 @@
 package com.devaeon.adsTemplate
 
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -9,20 +10,44 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import androidx.activity.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.devaeon.adsTemplate.databinding.ActivityMainBinding
-import com.devaeon.feature.revenue.data.ads.sdk.GoogleAdsSdk
-import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.devaeon.adsTemplate.ui.adsConfig.AdmobAdsViewModel
+import com.devaeon.core.common.extensions.delayDrawUntil
+import com.devaeon.feature.revenue.data.ads.UserConsentState
+import com.devaeon.feature.revenue.domain.model.AdState
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+
+    private val viewModel: AdmobAdsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        // Splash screen is dismissed on first frame drawn, delay it until we have a user consent status
+        findViewById<View>(android.R.id.content).delayDrawUntil {
+            viewModel.userConsentState.value != UserConsentState.UNKNOWN
+        }
+
+        viewModel.apply {
+            requestUserConsentIfNeeded(this@MainActivity)
+            loadAdIfNeeded(this@MainActivity)
+        }
 
         setSupportActionBar(binding.toolbar)
 
@@ -60,3 +85,5 @@ class MainActivity : AppCompatActivity() {
                 || super.onSupportNavigateUp()
     }
 }
+
+private const val TAG = "MainActivity"
