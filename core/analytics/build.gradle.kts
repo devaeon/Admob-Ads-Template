@@ -1,6 +1,6 @@
 plugins {
     alias(libs.plugins.devaeon.android.library)
-    alias(libs.plugins.devaeon.dagger.hilt)
+    alias(libs.plugins.devaeon.android.hilt)
 }
 
 android{

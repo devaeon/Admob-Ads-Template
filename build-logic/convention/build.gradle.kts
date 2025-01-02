@@ -50,7 +50,7 @@ gradlePlugin {
         }
 
         register("daggerHilt") {
-            id = "devaeon.dagger.hilt"
+            id = "devaeon.android.hilt"
             implementationClass = "com.devaeon.gradle.convention.HiltConventionPlugin"
         }
 
